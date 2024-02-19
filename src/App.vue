@@ -1,26 +1,35 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="container">
+    <div class="card">
+      <h2 v-color="myColor" >Разговор про директивы</h2>
+      <div class="form-control">
+        <label for="inp">Активный по умолчанию</label>
+        <input v-focus type="text" id="inp">
+      </div>
+
+      <button class="btn" @click="myColor = 'darkBlue'">Сделать синим!</button>
+      <button class="btn" @click="myColor = 'darkred'">Сделать Красным!</button>
+    </div>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import focusDirective from './focusDirective';
+import colorDirective from './colorDirective'
+
+
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  data(){
+    return{
+      myColor:'darkred'
+    }
+  },
+  
+  directives:{
+    focus: focusDirective,
+    color: colorDirective,
+
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
